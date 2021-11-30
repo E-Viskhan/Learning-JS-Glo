@@ -1,14 +1,12 @@
 let title = prompt('Как называется ваш проект?');
 let screens = prompt('Какие типы экранов нужно разработать?');
 let screenPrice = +prompt('Сколько будет стоить данная работа?');
-let rollback = 15;
+let rollback = 10;
 let adaptive = confirm('Нужен ли адаптив на сайте?');
-let firstServie = prompt('Какой дополнительный тип услуги нужен?');
-let firstServiePrice = +prompt('Сколько это будет стоить?');
-let secondServie = prompt('Какой дополнительный тип услуги нужен?');
-let secondServiePrice = +prompt('Сколько это будет стоить?');
-let fullPrice = screenPrice + firstServiePrice + secondServiePrice;
-let servicePercentPrice = Math.ceil((100 - rollback) / 100 * fullPrice);
+let firstService = prompt('Какой дополнительный тип услуги нужен?');
+let firstServicePrice = +prompt('Сколько это будет стоить?');
+let secondService = prompt('Какой дополнительный тип услуги нужен?');
+let secondServicePrice = +prompt('Сколько это будет стоить?');
 
 const showTypeOf = function (variable) {
   console.log(variable, typeof variable);
@@ -26,17 +24,35 @@ const getRollbackMessage = function (price) {
   }
 };
 
-showTypeOf(title);
-showTypeOf(fullPrice);
-showTypeOf(adaptive);
+const getAllServicePrices = function (firstPrice, secondPrice) {
+  return firstPrice + secondPrice;
+};
+
+function getFullPrice(mainPrice, ServicePrices) {
+  return mainPrice + ServicePrices;
+}
+
+const getTitle = (projectTitle) => {
+  projectTitle = projectTitle.toLowerCase().trim();
+  projectTitle = projectTitle[0].toUpperCase() + projectTitle.slice(1);
+  return projectTitle;
+};
+
+const getServicePercentPrices = (costWork, percentRollback) => {
+  return Math.ceil((100 - percentRollback) / 100 * costWork);
+};
+
+let allServicePrices = getAllServicePrices(firstServicePrice, secondServicePrice);
+let fullPrice = getFullPrice(screenPrice, allServicePrices);
+let servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
 
 screens = screens.toLowerCase();
 screens = screens.split(', ');
 
-console.log('Итоговая стоимость, за вычетом отката посреднику:', servicePercentPrice);
-console.log(`Стоимость верстки экранов ${screenPrice} рублей и стоимость разработки сайта ${fullPrice}`);
-console.log("Сумма отката:", fullPrice * (rollback / 100));
-console.log(getRollbackMessage(fullPrice));
+showTypeOf(title);
+showTypeOf(fullPrice);
+showTypeOf(adaptive);
 
-console.log("Длина строки переменной screens:", screens.length);
 console.log(screens);
+console.log(getRollbackMessage(fullPrice));
+console.log('Итоговая стоимость, за вычетом отката посреднику:', servicePercentPrice);
