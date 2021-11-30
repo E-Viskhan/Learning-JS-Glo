@@ -9,29 +9,34 @@ let secondServie = prompt('Какой дополнительный тип усл
 let secondServiePrice = +prompt('Сколько это будет стоить?');
 let fullPrice = screenPrice + firstServiePrice + secondServiePrice;
 let servicePercentPrice = Math.ceil((100 - rollback) / 100 * fullPrice);
-let discountMessage;
 
-if (fullPrice <= 0) {
-  discountMessage = 'Что то пошло не так';
-} else if (fullPrice > 0 && fullPrice < 15000) {
-  discountMessage = 'Скидка не предусмотрена';
-} else if (fullPrice >= 15000 && fullPrice < 30000) {
-  discountMessage = 'Даем скидку в 5%';
-} else {
-  discountMessage = 'Даем скидку в 10%';
-}
+const showTypeOf = function (variable) {
+  console.log(variable, typeof variable);
+};
+
+const getRollbackMessage = function (price) {
+  if (price <= 0) {
+    return 'Что то пошло не так';
+  } else if (price > 0 && price < 15000) {
+    return 'Скидка не предусмотрена';
+  } else if (price >= 15000 && price < 30000) {
+    return 'Даем скидку в 5%';
+  } else {
+    return 'Даем скидку в 10%';
+  }
+};
+
+showTypeOf(title);
+showTypeOf(fullPrice);
+showTypeOf(adaptive);
+
+screens = screens.toLowerCase();
+screens = screens.split(', ');
 
 console.log('Итоговая стоимость, за вычетом отката посреднику:', servicePercentPrice);
 console.log(`Стоимость верстки экранов ${screenPrice} рублей и стоимость разработки сайта ${fullPrice}`);
 console.log("Сумма отката:", fullPrice * (rollback / 100));
-console.log(discountMessage);
-
-// Вывод в консоль типов данных переменных
-console.log("Тип данных для переменной title:", typeof title);
-console.log("Тип данных для переменной fullPrice:", typeof fullPrice);
-console.log("Тип данных для переменной adaptive:", typeof adaptive);
+console.log(getRollbackMessage(fullPrice));
 
 console.log("Длина строки переменной screens:", screens.length);
-screens = screens.toLowerCase(); // приведение в нижний регистр
-screens = screens.split(', '); // разбиение строки по запятым с пробелом
 console.log(screens);
