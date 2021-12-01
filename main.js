@@ -25,11 +25,11 @@ const getRollbackMessage = function (price) {
 };
 
 const getAllServicePrices = function () {
-  return firstServicePrice, secondServicePrice;
+  return firstServicePrice + secondServicePrice;
 };
 
 function getFullPrice() {
-  return screenPrice, allServicePrices;
+  return screenPrice + allServicePrices;
 }
 
 const getTitle = () => {
