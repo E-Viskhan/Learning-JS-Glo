@@ -24,27 +24,27 @@ const getRollbackMessage = function (price) {
   }
 };
 
-const getAllServicePrices = function (firstPrice, secondPrice) {
-  return firstPrice + secondPrice;
+const getAllServicePrices = function () {
+  return firstServicePrice, secondServicePrice;
 };
 
-function getFullPrice(mainPrice, ServicePrices) {
-  return mainPrice + ServicePrices;
+function getFullPrice() {
+  return screenPrice, allServicePrices;
 }
 
-const getTitle = (projectTitle) => {
-  projectTitle = projectTitle.toLowerCase().trim();
-  projectTitle = projectTitle[0].toUpperCase() + projectTitle.slice(1);
-  return projectTitle;
+const getTitle = () => {
+  title = title.toLowerCase().trim();
+  title = title[0].toUpperCase() + title.slice(1);
+  return title;
 };
 
-const getServicePercentPrices = (costWork, percentRollback) => {
-  return Math.ceil((100 - percentRollback) / 100 * costWork);
+const getServicePercentPrices = () => {
+  return Math.ceil((100 - rollback) / 100 * fullPrice);
 };
 
-let allServicePrices = getAllServicePrices(firstServicePrice, secondServicePrice);
-let fullPrice = getFullPrice(screenPrice, allServicePrices);
-let servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
+let allServicePrices = getAllServicePrices();
+let fullPrice = getFullPrice();
+let servicePercentPrice = getServicePercentPrices();
 
 screens = screens.toLowerCase();
 screens = screens.split(', ');
