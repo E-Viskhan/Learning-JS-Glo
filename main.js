@@ -45,7 +45,7 @@ const getAllServicePrices = function () {
     }
 
     servicePrice = setNumberFromPrompt('Сколько это будет стоить?');
-    sum += parseFloat(servicePrice);
+    sum += servicePrice;
   }
 
   return sum;
