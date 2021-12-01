@@ -16,15 +16,20 @@ const isNumber = (num) => {
   return !isNaN(parseFloat(num)) && isFinite(num);
 };
 
+const setNumberFromPrompt = (messageForUser) => {
+  let number;
+
+  do {
+    number = prompt(messageForUser);
+  } while (!isNumber(number));
+
+  return parseFloat(number);
+};
+
 const asking = () => {
   title = prompt('Как называется ваш проект?', 'Калькулятор верстки');
   screens = prompt('Какие типы экранов нужно разработать?', 'Простые, Сложные');
-
-  do {
-    screenPrice = prompt('Сколько будет стоить данная работа?');
-  } while (!isNumber(screenPrice));
-  screenPrice = parseFloat(screenPrice);
-
+  screenPrice = setNumberFromPrompt('Сколько будет стоить данная работа?');
   adaptive = confirm('Нужен ли адаптив на сайте?');
 };
 
@@ -38,9 +43,8 @@ const getAllServicePrices = function () {
     } else if (i === 1) {
       secondService = prompt('Какой дополнительный тип услуги нужен?');
     }
-    do {
-      servicePrice = prompt('Сколько это будет стоить?');
-    } while (!isNumber(servicePrice));
+
+    servicePrice = setNumberFromPrompt('Сколько это будет стоить?');
     sum += parseFloat(servicePrice);
   }
 
