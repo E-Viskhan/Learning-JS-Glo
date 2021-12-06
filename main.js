@@ -99,15 +99,3 @@ const appData = {
 };
 
 appData.start();
-
-// console.log('allServicePrices', allServicePrices);
-
-// console.log(getRollbackMessage(fullPrice));
-// console.log(typeof title);
-// console.log(typeof screenPrice);
-// console.log(typeof adaptive);
-
-// console.log(screens.length);
-// console.log('Итоговая стоимость, за вычетом отката посреднику:', servicePercentPrice);
-
-// console.log(`Стоимость верстки экранов ${screenPrice} и Стоимость разработки сайта ${fullPrice}`);
