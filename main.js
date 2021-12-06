@@ -83,7 +83,7 @@ const appData = {
     console.log(appData.fullPrice);
 
     for (let item in appData) {
-      console.log(item);
+      console.log(item, appData[item]);
     }
   },
 
