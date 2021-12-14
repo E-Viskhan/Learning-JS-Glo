@@ -103,6 +103,7 @@ const appData = {
 
   },
   addScreenBlock: function () {
+    let screens = document.querySelectorAll('.screen');
     const cloneScreen = screens[0].cloneNode(true);
     screens[screens.length - 1].after(cloneScreen);
   },
