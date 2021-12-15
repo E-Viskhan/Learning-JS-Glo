@@ -51,6 +51,8 @@ const appData = {
       appData.addPrices();
       // appData.logger();
       appData.showResult();
+    } else {
+      appData.length = 0;
     }
 
   },
@@ -140,13 +142,14 @@ const appData = {
   //   appData.servicePercentPrice = Math.ceil((100 - appData.rollback) / 100 * appData.fullPrice);
   // },
   checkValues: function () {
-    let isCorrect = true;
     appData.screens.forEach(function (screen) {
       if (screen.price <= 0) {
-        isCorrect = false;
+        appData.screens.length = 0;
+        return false;
       }
     });
-    return isCorrect;
+
+    return true;
   },
   logger: () => {
     console.log(appData.servicePricesPercent);
