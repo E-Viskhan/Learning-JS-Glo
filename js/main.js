@@ -49,11 +49,17 @@ const appData = {
     if (appData.checkValues()) {
       appData.addServices();
       appData.addPrices();
-      // appData.logger();
       appData.showResult();
-    } else {
-      appData.length = 0;
+      // appData.logger();
     }
+    else {
+      appData.clearResult();
+      alert('Пожалуйста, заполните поля для ввода экранов');
+    }
+
+    appData.screens.length = 0;
+    appData.servicePricesNumber = 0;
+    appData.servicePricesPercent = 0;
 
   },
   showResult: function () {
@@ -63,6 +69,13 @@ const appData = {
     fullTotalCount.value = appData.fullPrice;
     totalCountRollback.value = appData.servicePercentPrice;
 
+  },
+  clearResult: function () {
+    total.value = 0;
+    totalCount.value = 0;
+    totalCountOther.value = 0;
+    fullTotalCount.value = 0;
+    totalCountRollback.value = 0;
   },
   addScreens: function () {
     screens = document.querySelectorAll('.screen');
@@ -138,18 +151,14 @@ const appData = {
       totalCountRollback.value = appData.servicePercentPrice;
     }
   },
-  // getServicePercentPrice: () => {
-  //   appData.servicePercentPrice = Math.ceil((100 - appData.rollback) / 100 * appData.fullPrice);
-  // },
   checkValues: function () {
+    let isCorrect = true;
     appData.screens.forEach(function (screen) {
       if (screen.price <= 0) {
-        appData.screens.length = 0;
-        return false;
+        isCorrect = false;
       }
     });
-
-    return true;
+    return isCorrect;
   },
   logger: () => {
     console.log(appData.servicePricesPercent);
